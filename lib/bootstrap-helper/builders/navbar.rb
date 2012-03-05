@@ -52,7 +52,7 @@ module BootstrapHelper
       end
 
       def collapse
-        template.link_to  "#",
+        template.link_to  '',
                           :class => ['btn', 'btn-navbar'],
                           "data-toggle" => "collapse",
                           "data-target" => ".nav-collapse" do
