@@ -18,7 +18,7 @@ module BootstrapHelper
         navbar_class << "navbar-fixed-top" if options[:top]
         template.content_tag(:div, class: navbar_class, "data-dropdown" => "dropdown") do
           template.content_tag(:div, class: "navbar-inner") do
-            template.content_tag(:div, buffer,class: "container")
+            template.content_tag(:div, buffer,class: "container#{options[:fluid] ? '-fluid' : ''}")
           end
         end
       end
@@ -29,12 +29,12 @@ module BootstrapHelper
 
       def nav(options = {},&block)
         buffer = template.capture(self, &proc)
-        template.content_tag(:ul,buffer, class: "nav") 
+        template.content_tag(:ul,buffer, class: ["nav", "nav-collapse"])
       end
 
       def second_nav(options = {},&block)
         buffer = template.capture(self, &proc)
-        template.content_tag(:ul,buffer, class: ["nav","pull-right"])
+        template.content_tag(:ul,buffer, class: ["nav","pull-right", "nav-collapse"])
       end
 
       def dropdown(title,options = {},&proc)
@@ -49,6 +49,15 @@ module BootstrapHelper
 
       def item(title,link,options = {})
         template.content_tag(:li,template.link_to(title,link))
+      end
+
+      def collapse
+        template.link_to  "#",
+                          :class => ['btn', 'btn-navbar'],
+                          "data-toggle" => "collapse",
+                          "data-target" => ".nav-collapse" do
+          3.times.map { template.content_tag :span, '', class:"icon-bar" }.inject(:+)
+        end
       end
 
     end
