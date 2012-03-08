@@ -52,10 +52,10 @@ module BootstrapHelper
       end
 
       def collapse
-        template.link_to  '',
-                          :class => ['btn', 'btn-navbar'],
-                          "data-toggle" => "collapse",
-                          "data-target" => ".nav-collapse" do
+        template.content_tag  :a,
+                              :class => ['btn', 'btn-navbar'],
+                              "data-toggle" => "collapse",
+                              "data-target" => ".nav-collapse" do
           3.times.map { template.content_tag :span, '', class:"icon-bar" }.inject(:+)
         end
       end
