@@ -48,7 +48,7 @@ module BootstrapHelper
       end
 
       def item(title,link,options = {})
-        template.content_tag(:li,template.link_to(title,link))
+        template.content_tag(:li,template.link_to(title,link), options)
       end
 
       def collapse
