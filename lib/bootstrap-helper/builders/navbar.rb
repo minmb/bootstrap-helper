@@ -15,6 +15,7 @@ module BootstrapHelper
 
       def wrapper(options ,buffer)
         navbar_class = ["navbar"]
+        navbar_class << "navbar-inverse" if options[:inverse]
         navbar_class << "navbar-fixed-top" if options[:top]
         template.content_tag(:div, class: navbar_class, "data-dropdown" => "dropdown") do
           template.content_tag(:div, class: "navbar-inner") do
